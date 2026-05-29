@@ -14254,3 +14254,146 @@ About Page
     0px 8px 15px rgba(0, 0, 0, 0.12);
 }
 
+/* LOGO */
+
+.cs_custom_logo{
+  text-decoration:none;
+}
+
+.cs_logo_text{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.cs_logo_s9{
+  font-size:34px;
+  font-weight:700;
+  color:#307BC4;
+  line-height:1;
+}
+
+.cs_logo_content{
+  display:flex;
+  flex-direction:column;
+}
+
+.cs_logo_title{
+  font-size:28px;
+  font-weight:700;
+  color:#16395c;
+  line-height:1;
+}
+
+.cs_logo_subtitle{
+  font-size:11px;
+  letter-spacing:3px;
+  color:#6c7b8a;
+  margin-top:4px;
+}
+
+/* CALL BUTTON */
+
+.cs_header_call{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#307BC4;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:50px;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.cs_header_call:hover{
+  background:#1f5f9e;
+  color:#fff;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:991px){
+
+  .cs_header_call span{
+    display:none;
+  }
+
+  .cs_header_call{
+    width:46px;
+    height:46px;
+    padding:0;
+    justify-content:center;
+  }
+
+  .cs_logo_s9{
+    font-size:28px;
+  }
+
+  .cs_logo_title{
+    font-size:22px;
+  }
+
+  .cs_logo_subtitle{
+    font-size:10px;
+    letter-spacing:2px;
+  }
+}
+
+/* Footer Brand */
+
+.cs_footer_brand{
+  margin-bottom: 12px;
+}
+
+.cs_footer_brand h2{
+  margin: 0;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.cs_footer_brand span{
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: rgba(255,255,255,0.70);
+}
+
+.cs_footer_brand_text{
+  max-width: 520px;
+  margin: 0;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.80);
+}
+
+/* Responsive */
+
+@media (max-width: 991px){
+
+  .cs_footer_brand h2{
+    font-size: 34px;
+  }
+
+}
+
+@media (max-width: 575px){
+
+  .cs_footer_brand h2{
+    font-size: 28px;
+  }
+
+  .cs_footer_brand span{
+    letter-spacing: 2px;
+    font-size: 11px;
+  }
+
+}
+
+.footer_dark{
+      color: #274760!important;
+}
