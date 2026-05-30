@@ -10549,7 +10549,7 @@ a.ui-button:active,
 
 .cs_banner.cs_style_3,
 .cs_banner.cs_style_5 {
-  padding: 225px 0 155px;
+  padding: 150px 0 155px;
   min-height: 700px;
   position: relative;
 }
@@ -10573,7 +10573,7 @@ a.ui-button:active,
 @media (max-width: 991px) {
   .cs_banner.cs_style_3,
   .cs_banner.cs_style_5 {
-    padding: 155px 0 100px;
+    padding: 100px 0 100px;
     text-align: center;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -14396,4 +14396,9 @@ About Page
 
 .footer_dark{
       color: #274760!important;
+}
+
+.active_nav{
+  color: #307BC4!important;
+  font-weight: 600;
 }
