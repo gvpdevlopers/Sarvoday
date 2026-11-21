@@ -40,14 +40,16 @@
   };
 
   $(window).on('load', function () {
-    preloader();
     isotopInit();
   });
+
+  window.setTimeout(preloader, 250);
 
   $(function () {
     mainNav();
     stickyHeader();
     dynamicBackground();
+    scrollReveal();
     counterInit();
     swiperInit();
     modalVideo();
@@ -76,8 +78,7 @@
     1. Preloader
   --------------------------------------------------------------*/
   function preloader() {
-    $('.cs_perloader').fadeOut();
-    $('cs_perloader_in').delay(150).fadeOut('slow');
+    $('.cs_perloader').stop(true, true).fadeOut(250);
   }
 
   /*--------------------------------------------------------------
@@ -152,10 +153,95 @@
   --------------------------------------------------------------*/
   function dynamicBackground() {
     $('[data-src]').each(function () {
-      var src = $(this).attr('data-src');
-      $(this).css({
+      var $element = $(this);
+      var thumbnailSrc = $element.attr('data-bg-src');
+      var src = thumbnailSrc || $element.attr('data-src');
+
+      if (!thumbnailSrc && $element.hasClass('st_lightbox_item')) {
+        return;
+      }
+
+      if (thumbnailSrc && 'IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries, currentObserver) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              $(entry.target).css({
+                'background-image': 'url(' + src + ')',
+              });
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: '200px 0px' });
+
+        observer.observe(this);
+        return;
+      }
+
+      $element.css({
         'background-image': 'url(' + src + ')',
       });
+    });
+  }
+
+  function scrollReveal() {
+    if (
+      !document.body.classList.contains('cs_brand_refresh') ||
+      !('IntersectionObserver' in window) ||
+      (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+    ) {
+      return;
+    }
+
+    var selectors = [
+      '.cs_site_banner .cs_banner_text',
+      '.cs_hero.cs_style_1 .cs_hero_text',
+      '.cs_section_heading',
+      '.cs_about_project_heading',
+      '.cs_doctors_heading',
+      '.cs_project_highlights_wrap .cs_department_list',
+      '.cs_gallery_card',
+      '.cs_iconbox.cs_style_5',
+      '.cs_team.cs_type_1',
+      '.cs_portfolio.cs_style_1',
+      '.cs_isotop',
+      '.cs_contact_form.cs_style_1',
+      '.cs_enquiry_form_wrap',
+      '.cs_enquiry_image_wrap',
+      '.cs_banner.cs_style_4',
+      '.cs_custom_cta_banner',
+    ];
+    var $targets = $(selectors.join(',')).filter(function () {
+      var $target = $(this);
+      var isIsotopeContainer = $target.is('.cs_isotop');
+
+      return (
+        !$target.closest('.cs_sidenav, .cs_footer').length &&
+        (!$target.closest('.cs_isotop').length || isIsotopeContainer)
+      );
+    });
+    var previousGroup = null;
+    var groupIndex = 0;
+    var observer = new IntersectionObserver(function (entries, currentObserver) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('cs_revealed');
+          currentObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -8% 0px',
+      threshold: 0.08,
+    });
+
+    $targets.each(function () {
+      var $target = $(this);
+      var group = $target.closest('.row, .cs_slider_activate').get(0) || this.parentElement;
+
+      groupIndex = group === previousGroup ? groupIndex + 1 : 0;
+      previousGroup = group;
+      this.style.transitionDelay = Math.min(groupIndex, 3) * 70 + 'ms';
+      this.classList.add('cs_reveal');
+      observer.observe(this);
     });
   }
 
@@ -166,8 +252,56 @@
     if ($.exists('.cs_department_carousel')) {
       $('.cs_department_carousel').each(function () {
         var $slickActive = $(this).find('.cs_slider_activate');
+        var isProjectHighlights = $(this).closest('.cs_project_highlights_wrap').length > 0;
+        var responsiveSettings = isProjectHighlights
+          ? [
+              {
+                breakpoint: 991,
+                settings: {
+                  slidesToShow: 2,
+                },
+              },
+              {
+                breakpoint: 575,
+                settings: {
+                  slidesToShow: 1,
+                },
+              },
+            ]
+          : [
+              {
+                breakpoint: 1700,
+                settings: {
+                  slidesToShow: 5,
+                },
+              },
+              {
+                breakpoint: 1199,
+                settings: {
+                  slidesToShow: 4,
+                },
+              },
+              {
+                breakpoint: 991,
+                settings: {
+                  slidesToShow: 3,
+                },
+              },
+              {
+                breakpoint: 767,
+                settings: {
+                  slidesToShow: 2,
+                },
+              },
+              {
+                breakpoint: 420,
+                settings: {
+                  slidesToShow: 1,
+                },
+              },
+            ];
         $slickActive.slick({
-          slidesToShow: 6,
+          slidesToShow: isProjectHighlights ? 3 : 6,
           infinite: true,
           slidesToScroll: 1,
           autoplay: false,
@@ -176,38 +310,7 @@
           arrows: true,
           prevArrow: $(this).find('.cs_slider_prev'),
           nextArrow: $(this).find('.cs_slider_next'),
-          responsive: [
-            {
-              breakpoint: 1700,
-              settings: {
-                slidesToShow: 5,
-              },
-            },
-            {
-              breakpoint: 1199,
-              settings: {
-                slidesToShow: 4,
-              },
-            },
-            {
-              breakpoint: 991,
-              settings: {
-                slidesToShow: 3,
-              },
-            },
-            {
-              breakpoint: 767,
-              settings: {
-                slidesToShow: 2,
-              },
-            },
-            {
-              breakpoint: 420,
-              settings: {
-                slidesToShow: 1,
-              },
-            },
-          ],
+          responsive: responsiveSettings,
         });
       });
     }
@@ -605,10 +708,18 @@
       new WOW().init();
     }
     if ($.exists('.cs_select')) {
-      $('.cs_select').select2({
-        placeholder: function () {
-          $(this).data('placeholder');
-        },
+      $('.cs_select').each(function () {
+        var placeholder =
+          $(this).data('placeholder') ||
+          $(this).find('option[value=""]').first().text();
+        var selectOptions = {
+          width: '100%',
+          minimumResultsForSearch: Infinity,
+        };
+        if (placeholder) {
+          selectOptions.placeholder = placeholder;
+        }
+        $(this).select2(selectOptions);
       });
     }
   }

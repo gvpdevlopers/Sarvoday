@@ -24,9 +24,10 @@
   <link rel="stylesheet" href="assets/css/plugins/select2.min.css">
   <link rel="stylesheet" href="assets/css/plugins/animated-headline.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/site-refresh.css">
 </head>
 
-<body>
+<body class="cs_brand_refresh">
   <!-- Start Preloader -->
   <div class="cs_perloader">
     <div class="cs_perloader_in">
@@ -60,23 +61,8 @@
             <!-- LOGO -->
             <a class="cs_site_branding cs_custom_logo" href="index.html">
 
-              <div class="cs_logo_text">
-
-                <span class="cs_logo_s9">S9</span>
-
-                <div class="cs_logo_content">
-
-                  <span class="cs_logo_title">
-                    Sarvoday
-                  </span>
-
-                  <span class="cs_logo_subtitle">
-                    DOCTOR PARK
-                  </span>
-
-                </div>
-
-              </div>
+              <img class="cs_brand_mark" src="assets/images/sarvoday-logo.png" alt="S9 Sarvoday">
+              <span class="cs_brand_caption">DOCTOR PARK</span>
 
             </a>
 
@@ -172,21 +158,8 @@
       <div class="cs_logo_box">
 
         <div class="cs_logo_text">
-
-          <span class="cs_logo_s9">S9</span>
-
-          <div class="cs_logo_content">
-
-            <span class="cs_logo_title">
-              Sarvoday
-            </span>
-
-            <span class="cs_logo_subtitle">
-              DOCTOR PARK
-            </span>
-
-          </div>
-
+          <img class="cs_brand_mark" src="assets/images/sarvoday-logo.png" alt="S9 Sarvoday">
+          <span class="cs_brand_caption">DOCTOR PARK</span>
         </div>
 
         <div class="cs_height_15"></div>
@@ -416,7 +389,7 @@
   <!-- End Header Section -->
   <!-- Start Hero -->
   <section class="cs_hero cs_style_1">
-    <div class="cs_hero_wrap cs_bg_filed" data-src="assets/img/home_1/hero_bg.jpeg">
+    <div class="cs_hero_wrap cs_bg_filed" data-src="assets/images/site-hero/project.jpg">
       <div class="container">
         <div class="cs_hero_text">
 
@@ -436,7 +409,7 @@
             amenities, dedicated parking, and a thriving medical ecosystem.
           </p>
           <div class="cs_hero_info_col">
-            <a href="/contact.html" class="cs_btn cs_style_1">
+            <a href="contact.html" class="cs_btn cs_style_1">
               <span>Schedule Site Visit</span>
               <i>
                 <img src="assets/img/icons/arrow_white.svg" alt="Icon">
@@ -445,9 +418,6 @@
             </a>
           </div>
         </div>
-        <img src="assets/images/hero3.jpeg" alt="Hero" class="cs_hero_img">
-        <!-- <img src="assets/images/hero.jpeg" alt="Hero" class="cs_hero_img"> -->
-
         <div class="cs_hero_info_wrap cs_shadow_1 cs_white_bg cs_radius_15 cs_trust_strip">
 
           <!-- ITEM -->
@@ -457,7 +427,7 @@
             </div>
 
             <div class="cs_trust_text">
-              <h3>12+</h3>
+              <h3><span class="odometer" data-count-to="12">0</span>+</h3>
               <p>Years Experience</p>
             </div>
           </div>
@@ -469,7 +439,7 @@
             </div>
 
             <div class="cs_trust_text">
-              <h3>15+</h3>
+              <h3><span class="odometer" data-count-to="15">0</span>+</h3>
               <p>Successful Projects</p>
             </div>
           </div>
@@ -481,7 +451,7 @@
             </div>
 
             <div class="cs_trust_text">
-              <h3>2000+</h3>
+              <h3><span class="odometer" data-count-to="2000">0</span>+</h3>
               <p>Investors & Professionals</p>
             </div>
           </div>
@@ -493,7 +463,7 @@
             </div>
 
             <div class="cs_trust_text">
-              <h3>27</h3>
+              <h3><span class="odometer" data-count-to="27">0</span></h3>
               <p>Premium Doctor Units</p>
             </div>
           </div>
@@ -709,17 +679,17 @@
             <div class="cs_about_highlight">
 
               <div class="cs_highlight_item">
-                <h3>27+</h3>
+                <h3><span class="odometer" data-count-to="27">0</span>+</h3>
                 <p>Premium Doctor Units</p>
               </div>
 
               <div class="cs_highlight_item">
-                <h3>12+</h3>
+                <h3><span class="odometer" data-count-to="12">0</span>+</h3>
                 <p>Years Experience</p>
               </div>
 
               <div class="cs_highlight_item">
-                <h3>15+</h3>
+                <h3><span class="odometer" data-count-to="15">0</span>+</h3>
                 <p>Successful Projects</p>
               </div>
 
@@ -1555,7 +1525,7 @@
                   Profession
                 </label>
 
-                <select name="profession" class="cs_form_field">
+                <select name="profession" class="cs_form_field cs_select" data-placeholder="Select Profession">
 
                   <option value="">Select Profession</option>
 
@@ -1582,7 +1552,7 @@
                   Interested In
                 </label>
 
-                <select name="interest" class="cs_form_field">
+                <select name="interest" class="cs_form_field cs_select" data-placeholder="Select Option">
 
                   <option value="">Select Option</option>
 
@@ -1632,6 +1602,10 @@
 
               </div>
 
+              <div class="col-lg-12">
+                <p class="cs_form_status" role="status" aria-live="polite"></p>
+              </div>
+
             </form>
 
           </div>
@@ -1639,7 +1613,7 @@
         </div>
 
         <!-- RIGHT IMAGE -->
-        <div class="col-lg-5 offset-lg-1">
+        <div class="col-lg-6">
 
           <div class="cs_enquiry_image_wrap">
 
@@ -1879,8 +1853,7 @@
 
             <div class="cs_footer_brand">
 
-              <h2>S9 Sarvoday</h2>
-
+              <img src="assets/images/sarvoday-logo.png" alt="S9 Sarvoday" class="cs_footer_brand_logo">
               <span>DOCTOR PARK</span>
 
             </div>
@@ -2114,15 +2087,25 @@
     homeForm.addEventListener('submit', async function (e) {
 
       e.preventDefault();
+      const fields = new FormData(homeForm);
+      const submitButton = homeForm.querySelector('button[type="submit"]');
+      const submitLabel = submitButton.querySelector('span');
+      const status = homeForm.querySelector('.cs_form_status');
+      const originalLabel = submitLabel.textContent;
+      submitButton.disabled = true;
+      submitButton.setAttribute('aria-busy', 'true');
+      submitLabel.textContent = 'Submitting...';
+      status.textContent = '';
+      status.removeAttribute('data-state');
 
       const formData = {
 
-        name: homeForm.name.value,
-        phone: homeForm.phone.value,
-        email: homeForm.email.value,
-        profession: homeForm.profession.value,
-        interestedIn: homeForm.interest.value,
-        message: homeForm.message.value,
+        name: fields.get('name'),
+        phone: fields.get('phone'),
+        email: fields.get('email'),
+        profession: fields.get('profession'),
+        interestedIn: fields.get('interest'),
+        message: fields.get('message'),
 
         source: "Home Page"
 
@@ -2138,23 +2121,31 @@
           }
         );
 
+        if (!response.ok) {
+          throw new Error(`Enquiry request failed with status ${response.status}`);
+        }
+
         const result = await response.json();
 
-        if (result.result === "success") {
-
-          alert(
-            "Thank you! Your enquiry has been submitted successfully."
-          );
-
-          homeForm.reset();
-
+        if (result.result !== "success") {
+          throw new Error('The enquiry service did not confirm the submission.');
         }
+
+        status.textContent = 'Thank you! Your enquiry has been submitted successfully.';
+        status.dataset.state = 'success';
+        homeForm.reset();
 
       } catch (error) {
 
-        alert(
-          "Something went wrong. Please try again."
-        );
+        console.error("Home page enquiry submission failed.", error);
+        status.textContent = 'We could not submit your enquiry. Please try again or call +91 87587 87758.';
+        status.dataset.state = 'error';
+
+      } finally {
+
+        submitButton.disabled = false;
+        submitButton.removeAttribute('aria-busy');
+        submitLabel.textContent = originalLabel;
 
       }
 
